@@ -43,7 +43,7 @@ module GraphQL
         def set_class(type_name, klass)
           class_name = normalize_type_name(type_name)
 
-          if constants.include?(class_name.to_sym)
+          if const_defined?(class_name, false)
             raise ArgumentError,
               "Can't define #{class_name} to represent type #{type_name} " \
               "because it's already defined"
